@@ -36,6 +36,7 @@
 				
 				ctx.clearRect(0, 0, canvas.width, canvas.width);
 				ctx.beginPath();
+				
 				//Draw clock dial.
 				ctx.arc(centerX, centerY, clockDialRadius, 0, (2 * Math.PI), false);
 				ctx.moveTo(centerX, centerY);
@@ -51,6 +52,7 @@
 				//Draw second hand.
 				ctx.lineTo(centerX + secondLength * secondX, centerY + secondLength * secondY);
 				ctx.moveTo(centerX, centerY);
+				
 				ctx.stroke();
 			}
 			var animateInterval = setInterval(animate, 1000); 
