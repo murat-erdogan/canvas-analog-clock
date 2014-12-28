@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function init() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var hourLength = 60;
+            var minuteLength = 80;
+            var secondLength = 90;
+            var clockDialRadius = 100;
+
+            function animate() {
+                var d = new Date();
+
+                //Calculate 1/12 of circle in radians for hour hand and also consider the 12-hour cycle.
+                var hour = ((d.getHours() % 12) / 12) * (2 * Math.PI);
+                //Increase hour hand respect to minutes.
+                hour += (d.getMinutes() / (12 * 60)) * (2 * Math.PI);
+                var hourX = Math.sin(hour);
+                var hourY = -1 * Math.cos(hour);
+
+                //Calculate 1/60 of circle in radians for minute hand.
+                var minute = (d.getMinutes() / 60) * (2 * Math.PI);
+                //Increase minute hand respect to seconds.
+                minute += (d.getSeconds() / (60 * 60)) * (2 * Math.PI);
+                var minuteX = Math.sin(minute);
+                var minuteY = -1 * Math.cos(minute);
+
+                //Calculate 1/60 of circle in radians for second hand.
+                var second = (d.getSeconds() / 60) * (2 * Math.PI);
+                var secondX = Math.sin(second);
+                var secondY = -1 * Math.cos(second);
+
+                ctx.clearRect(0, 0, canvas.width, canvas.width);
+
+                //Draw clock dial.
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 3, 0, (2 * Math.PI), false);
+                ctx.fill();
+                ctx.closePath();
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 100, 0, (2 * Math.PI), false);
+                for (i = 0; i < 12; i++) {
+                    ctx.fillText(i,
+                        centerX-3 + (clockDialRadius - 20) * Math.sin(i / 12 * 2 * Math.PI),
+                        centerY+3 + (clockDialRadius - 20) * (-1) * Math.cos(i / 12 * 2 * Math.PI)
+                    );
+                    ctx.moveTo(
+                        centerX + (clockDialRadius - 10) * Math.sin(i / 12 * 2 * Math.PI),
+                        centerY + (clockDialRadius - 10) * (-1) * Math.cos(i / 12 * 2 * Math.PI)
+                    );
+                    ctx.lineTo(
+                        centerX + clockDialRadius * Math.sin(i / 12 * 2 * Math.PI),
+                        centerY + clockDialRadius * (-1) * Math.cos(i / 12 * 2 * Math.PI)
+                    );
+                }
+
+                for (i = 0; i < 60; i++) {
+                    ctx.moveTo(
+                        centerX + (clockDialRadius - 5) * Math.sin(i / 60 * 2 * Math.PI),
+                        centerY + (clockDialRadius - 5) * (-1) * Math.cos(i / 60 * 2 * Math.PI)
+                    );
+                    ctx.lineTo(
+                        centerX + clockDialRadius * Math.sin(i / 60 * 2 * Math.PI),
+                        centerY + clockDialRadius * (-1) * Math.cos(i / 60 * 2 * Math.PI)
+                    );
+                }
+
+                //Draw hour hand.
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(centerX + hourLength * hourX, centerY + hourLength * hourY);
+                ctx.moveTo(centerX, centerY);
+
+                //Draw minute hand.
+                ctx.lineTo(centerX + minuteLength * minuteX, centerY + minuteLength * minuteY);
+                ctx.moveTo(centerX, centerY);
+
+                //Draw second hand.
+                ctx.lineTo(centerX + secondLength * secondX, centerY + secondLength * secondY);
+                ctx.moveTo(centerX, centerY);
+
+                ctx.stroke();
+            }
+            var animateInterval = setInterval(animate, 1000);
+        }
+        window.addEventListener('load', function(event) {
+            init();
+        });
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+
+</html>
