@@ -11,8 +11,8 @@
             var minuteLength = 80;
             var secondLength = 90;
             var clockDialRadius = 100;
-    		
-    		function animate() {
+            
+            function animate() {
                 var d = new Date();
                 var hour = d.getHours() % 12;
                 var minute = d.getMinutes();
@@ -30,12 +30,12 @@
                 ctx.moveTo(centerX, centerY);
                 ctx.stroke();
                 //ctx.restore();
-    		}
-    		var animateInterval = setInterval(animate, 1000); 
-    	}
+            }
+            var animateInterval = setInterval(animate, 1000); 
+        }
     	window.addEventListener('load', function(event) { 
             init();
-    	});
+        });
     </script>
 </head>
 <body>
