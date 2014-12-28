@@ -46,9 +46,9 @@
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, 100, 0, (2 * Math.PI), false);
                 for (i = 0; i < 12; i++) {
-                    ctx.fillText(i,
-                        centerX-3 + (clockDialRadius - 20) * Math.sin(i / 12 * 2 * Math.PI),
-                        centerY+3 + (clockDialRadius - 20) * (-1) * Math.cos(i / 12 * 2 * Math.PI)
+                    ctx.fillText(i == 0 ? 12 : i,
+                        (centerX - 3) + (clockDialRadius - 20) * Math.sin(i / 12 * 2 * Math.PI),
+                        (centerY + 3) + (clockDialRadius - 20) * (-1) * Math.cos(i / 12 * 2 * Math.PI)
                     );
                     ctx.moveTo(
                         centerX + (clockDialRadius - 10) * Math.sin(i / 12 * 2 * Math.PI),
