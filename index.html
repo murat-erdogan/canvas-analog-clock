@@ -13,28 +13,28 @@
             var clockDialRadius = 100;
     		
     		function animate() {
-    			var d = new Date();
-    			var hour = d.getHours() % 12;
-    			var minute = d.getMinutes();
-    			var second = d.getSeconds();
-    			//ctx.save();
-    			ctx.clearRect(0, 0, 300, 300);
-    			ctx.beginPath();
-    			ctx.arc(centerX, centerY, clockDialRadius, 0, 2*Math.PI, false);
-    			ctx.moveTo(centerX, centerY);
-    			ctx.lineTo((centerX+hourLength*Math.sin((hour/12)*2*Math.PI)), (centerY+hourLength*(-1)*Math.cos((hour/12)*2*Math.PI)));
-    			ctx.moveTo(centerX, centerY);
-    			ctx.lineTo((centerX+minuteLength*Math.sin((minute/60)*2*Math.PI)), (centerY+minuteLength*(-1)*Math.cos((minute/60)*2*Math.PI)));
-    			ctx.moveTo(centerX, centerY);
-    			ctx.lineTo((centerX+secondLength*Math.sin((second/60)*2*Math.PI)), (centerY+secondLength*(-1)*Math.cos((second/60)*2*Math.PI)));
-    			ctx.moveTo(centerX, centerY);
-    			ctx.stroke();
-    			//ctx.restore();
+                var d = new Date();
+                var hour = d.getHours() % 12;
+                var minute = d.getMinutes();
+                var second = d.getSeconds();
+                //ctx.save();
+                ctx.clearRect(0, 0, 300, 300);
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, clockDialRadius, 0, 2*Math.PI, false);
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo((centerX+hourLength*Math.sin((hour/12)*2*Math.PI)), (centerY+hourLength*(-1)*Math.cos((hour/12)*2*Math.PI)));
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo((centerX+minuteLength*Math.sin((minute/60)*2*Math.PI)), (centerY+minuteLength*(-1)*Math.cos((minute/60)*2*Math.PI)));
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo((centerX+secondLength*Math.sin((second/60)*2*Math.PI)), (centerY+secondLength*(-1)*Math.cos((second/60)*2*Math.PI)));
+                ctx.moveTo(centerX, centerY);
+                ctx.stroke();
+                //ctx.restore();
     		}
     		var animateInterval = setInterval(animate, 1000); 
     	}
     	window.addEventListener('load', function(event) { 
-    		init();
+            init();
     	});
     </script>
 </head>
