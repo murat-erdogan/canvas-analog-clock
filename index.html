@@ -17,7 +17,7 @@
 
             ctx.arc(centerX, centerY, clockDialRadius, 0, 2*Math.PI, false);
             ctx.moveTo(centerX, centerY);
-            ctx.lineTo((centerX+hourLength*Math.sin((hour/12+hour/5)*2*Math.PI)), (centerY+hourLength*(-1)*Math.cos((hour/12+hour/5)*2*Math.PI)));
+            ctx.lineTo((centerX+hourLength*Math.sin((hour/12)*2*Math.PI)), (centerY+hourLength*(-1)*Math.cos((hour/12)*2*Math.PI)));
             ctx.moveTo(centerX, centerY);
             ctx.lineTo((centerX+minuteLength*Math.sin((minute/60)*2*Math.PI)), (centerY+minuteLength*(-1)*Math.cos((minute/60)*2*Math.PI)));
             ctx.moveTo(centerX, centerY);
