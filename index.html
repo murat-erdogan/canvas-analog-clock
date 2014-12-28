@@ -2,70 +2,70 @@
 <html>
 
 <head>
-	<script>
-		function init() {
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext("2d");
-			var centerX = canvas.width / 2;
-			var centerY = canvas.height / 2;
-			var hourLength = 60;
-			var minuteLength = 80;
-			var secondLength = 90;
-			var clockDialRadius = 100;
+    <script>
+        function init() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var hourLength = 60;
+            var minuteLength = 80;
+            var secondLength = 90;
+            var clockDialRadius = 100;
 
-			function animate() {
-				var d = new Date();
+            function animate() {
+                var d = new Date();
 
-				//Calculate 1/12 of circle in radians for hour hand and also consider the 12-hour cycle.
-				var hour = ((d.getHours() % 12) / 12) * (2 * Math.PI);
-				//Increase hour hand respect to minutes.
-				hour += (d.getMinutes() / (12 * 60)) * (2 * Math.PI);
-				var hourX = Math.sin(hour);
-				var hourY = -1 * Math.cos(hour);
+                //Calculate 1/12 of circle in radians for hour hand and also consider the 12-hour cycle.
+                var hour = ((d.getHours() % 12) / 12) * (2 * Math.PI);
+                //Increase hour hand respect to minutes.
+                hour += (d.getMinutes() / (12 * 60)) * (2 * Math.PI);
+                var hourX = Math.sin(hour);
+                var hourY = -1 * Math.cos(hour);
 
-				//Calculate 1/60 of circle in radians for minute hand.
-				var minute = (d.getMinutes() / 60) * (2 * Math.PI);
-				//Increase minute hand respect to seconds.
-				minute += (d.getSeconds() / (60 * 60)) * (2 * Math.PI);
-				var minuteX = Math.sin(minute);
-				var minuteY = -1 * Math.cos(minute);
+                //Calculate 1/60 of circle in radians for minute hand.
+                var minute = (d.getMinutes() / 60) * (2 * Math.PI);
+                //Increase minute hand respect to seconds.
+                minute += (d.getSeconds() / (60 * 60)) * (2 * Math.PI);
+                var minuteX = Math.sin(minute);
+                var minuteY = -1 * Math.cos(minute);
 
-				//Calculate 1/60 of circle in radians for second hand.
-				var second = (d.getSeconds() / 60) * (2 * Math.PI);
-				var secondX = Math.sin(second);
-				var secondY = -1 * Math.cos(second);
+                //Calculate 1/60 of circle in radians for second hand.
+                var second = (d.getSeconds() / 60) * (2 * Math.PI);
+                var secondX = Math.sin(second);
+                var secondY = -1 * Math.cos(second);
 
-				ctx.clearRect(0, 0, canvas.width, canvas.width);
-				ctx.beginPath();
+                ctx.clearRect(0, 0, canvas.width, canvas.width);
+                ctx.beginPath();
 
-				//Draw clock dial.
-				ctx.arc(centerX, centerY, clockDialRadius, 0, (2 * Math.PI), false);
-				ctx.moveTo(centerX, centerY);
+                //Draw clock dial.
+                ctx.arc(centerX, centerY, clockDialRadius, 0, (2 * Math.PI), false);
+                ctx.moveTo(centerX, centerY);
 
-				//Draw hour hand.
-				ctx.lineTo(centerX + hourLength * hourX, centerY + hourLength * hourY);
-				ctx.moveTo(centerX, centerY);
+                //Draw hour hand.
+                ctx.lineTo(centerX + hourLength * hourX, centerY + hourLength * hourY);
+                ctx.moveTo(centerX, centerY);
 
-				//Draw minute hand.
-				ctx.lineTo(centerX + minuteLength * minuteX, centerY + minuteLength * minuteY);
-				ctx.moveTo(centerX, centerY);
+                //Draw minute hand.
+                ctx.lineTo(centerX + minuteLength * minuteX, centerY + minuteLength * minuteY);
+                ctx.moveTo(centerX, centerY);
 
-				//Draw second hand.
-				ctx.lineTo(centerX + secondLength * secondX, centerY + secondLength * secondY);
-				ctx.moveTo(centerX, centerY);
+                //Draw second hand.
+                ctx.lineTo(centerX + secondLength * secondX, centerY + secondLength * secondY);
+                ctx.moveTo(centerX, centerY);
 
-				ctx.stroke();
-			}
-			var animateInterval = setInterval(animate, 1000);
-		}
-		window.addEventListener('load', function(event) {
-			init();
-		});
-	</script>
+                ctx.stroke();
+            }
+            var animateInterval = setInterval(animate, 1000);
+        }
+        window.addEventListener('load', function(event) {
+            init();
+        });
+    </script>
 </head>
 
 <body>
-	<canvas id="canvas" width="300" height="300"></canvas>
+    <canvas id="canvas" width="300" height="300"></canvas>
 </body>
 
 </html>
