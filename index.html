@@ -18,14 +18,14 @@
 
                 //Calculate 1/12 of circle in radians for hour hand and also consider the 12-hour cycle.
                 var hour = ((d.getHours() % 12) / 12) * (2 * Math.PI);
-                //Increase hour hand respect to minutes.
+                //Increase hour hand with respect to minutes.
                 hour += (d.getMinutes() / (12 * 60)) * (2 * Math.PI);
                 var hourX = Math.sin(hour);
                 var hourY = -1 * Math.cos(hour);
 
                 //Calculate 1/60 of circle in radians for minute hand.
                 var minute = (d.getMinutes() / 60) * (2 * Math.PI);
-                //Increase minute hand respect to seconds.
+                //Increase minute hand with respect to seconds.
                 minute += (d.getSeconds() / (60 * 60)) * (2 * Math.PI);
                 var minuteX = Math.sin(minute);
                 var minuteY = -1 * Math.cos(minute);
