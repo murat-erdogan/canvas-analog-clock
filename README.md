@@ -1,3 +1,3 @@
 canvas-analog-clock
 ===================
-demo: http://muraterdogan.co.uk/clock.html
+demo: http://muraterdogan.co.uk/files/clock.html
